@@ -8,7 +8,7 @@ import org.opencv.core.Algorithm;
 import org.opencv.core.Mat;
 import org.opencv.core.Size;
 
-// C++: class CLAHE
+// C++: class CLAHE 对比度限幅自适应直方图均衡
 //javadoc: CLAHE
 public class CLAHE extends Algorithm {
 

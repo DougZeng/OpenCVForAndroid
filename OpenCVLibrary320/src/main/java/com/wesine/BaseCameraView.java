@@ -1,11 +1,11 @@
-package com.kongqw;
+package com.wesine;
 
 import android.content.Context;
 import android.hardware.Camera;
 import android.util.AttributeSet;
 import android.util.Log;
 
-import com.kongqw.listener.OnOpenCVLoadListener;
+import com.wesine.listener.OnOpenCVLoadListener;
 
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.InstallCallbackInterface;
@@ -15,7 +15,7 @@ import org.opencv.android.OpenCVLoader;
 import org.opencv.core.Mat;
 
 /**
- * Created by kongqingwei on 2017/5/17.
+ *
  * BaseRobotCameraView
  */
 

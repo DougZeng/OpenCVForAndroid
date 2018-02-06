@@ -1,20 +1,23 @@
-package kong.qingwei.opencv320;
+package com.wesine.opencv320;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-import com.kongqw.ObjectDetectingView;
-import com.kongqw.ObjectDetector;
-import com.kongqw.listener.OnOpenCVLoadListener;
+import com.wesine.ObjectDetectingView;
+import com.wesine.ObjectDetector;
+import com.wesine.listener.OnOpenCVLoadListener;
 
 import org.opencv.core.Scalar;
 
+
 public class ObjectDetectingActivity extends BaseActivity implements CompoundButton.OnCheckedChangeListener {
 
+    private static final String TAG = ObjectDetectingActivity.class.getSimpleName();
     private ObjectDetectingView objectDetectingView;
     private ObjectDetector mFaceDetector;
     private ObjectDetector mEyeDetector;
@@ -43,6 +46,8 @@ public class ObjectDetectingActivity extends BaseActivity implements CompoundBut
             public void onOpenCVLoadSuccess() {
                 Toast.makeText(getApplicationContext(), "OpenCV 加载成功", Toast.LENGTH_SHORT).show();
                 mFaceDetector = new ObjectDetector(getApplicationContext(), R.raw.lbpcascade_frontalface, 6, 0.2F, 0.2F, new Scalar(255, 0, 0, 255));
+                //log i
+                Log.i(TAG, "onOpenCVLoadSuccess: " + mFaceDetector);
                 mEyeDetector = new ObjectDetector(getApplicationContext(), R.raw.haarcascade_eye, 6, 0.1F, 0.1F, new Scalar(0, 255, 0, 255));
                 mUpperBodyDetector = new ObjectDetector(getApplicationContext(), R.raw.haarcascade_upperbody, 3, 0.3F, 0.4F, new Scalar(0, 0, 255, 255));
                 mLowerBodyDetector = new ObjectDetector(getApplicationContext(), R.raw.haarcascade_lowerbody, 3, 0.3F, 0.4F, new Scalar(255, 255, 0, 255));

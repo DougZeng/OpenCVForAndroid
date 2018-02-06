@@ -4,18 +4,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="kong.qingwei.opencv320.MainActivity">
+    tools:context="com.wesine.opencv320.MainActivity">
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onDetecting"
+        android:visibility="gone"
         android:text="目标检测" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onTracking"
+        android:visibility="gone"
         android:text="目标跟踪" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="CV"
+        android:text="KNN" />
+
 
 </LinearLayout>

@@ -1,9 +1,9 @@
-package com.kongqw;
+package com.wesine;
 
 import android.graphics.Bitmap;
 import android.util.Log;
 
-import com.kongqw.listener.OnCalcBackProjectListener;
+import com.wesine.listener.OnCalcBackProjectListener;
 
 import org.opencv.android.Utils;
 import org.opencv.core.Core;
@@ -23,7 +23,6 @@ import java.util.List;
 import java.util.Vector;
 
 /**
- * Created by kongqingwei on 2017/4/26.
  * ObjectTracker
  */
 public class ObjectTracker {
@@ -114,6 +113,8 @@ public class ObjectTracker {
         rgba2Hsv(mRgba);
 
         updateHueImage();
+
+
         // 计算直方图的反投影。
         // Imgproc.calcBackProject(hueList, new MatOfInt(0), hist, prob, ranges, 255);
         Imgproc.calcBackProject(hueList, new MatOfInt(0), hist, prob, ranges, 1.0);
@@ -121,8 +122,12 @@ public class ObjectTracker {
         // 计算两个数组的按位连接（dst = src1 & src2）计算两个数组或数组和标量的每个元素的逐位连接。
         Core.bitwise_and(prob, mask, prob, new Mat());
 
+
+
         // 追踪目标
         rotatedRect = Video.CamShift(prob, trackRect, new TermCriteria(TermCriteria.EPS, 10, 1));
+
+
 
         if (null != mOnCalcBackProjectListener) {
             mOnCalcBackProjectListener.onCalcBackProject(prob);

@@ -1,4 +1,4 @@
-package com.kongqw;
+package com.wesine;
 
 import android.content.Context;
 
@@ -16,7 +16,6 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * Created by kongqingwei on 2017/5/17.
  * ObjectDetector
  */
 

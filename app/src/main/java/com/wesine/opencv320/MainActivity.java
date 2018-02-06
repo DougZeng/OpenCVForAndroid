@@ -1,4 +1,4 @@
-package kong.qingwei.opencv320;
+package com.wesine.opencv320;
 
 import android.Manifest;
 import android.content.Intent;
@@ -7,8 +7,16 @@ import android.support.annotation.NonNull;
 import android.view.View;
 
 import com.kongqw.permissionslibrary.PermissionsManager;
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 
+
+/**
+ * BackgroundSubtractorKNN/BackgroundSubtractorMOG2/findContours/OpticalFlowPyrLK效率
+ */
 public class MainActivity extends BaseActivity {
+
+    
 
     private PermissionsManager mPermissionsManager;
 
@@ -19,9 +27,12 @@ public class MainActivity extends BaseActivity {
     // 追踪请求码
     private final int REQUEST_CODE_TRACK = 1;
 
+    private final int REQUEST_CODE_CV = 2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_main);
 
         // 动态权限校验
@@ -36,6 +47,9 @@ public class MainActivity extends BaseActivity {
                         break;
                     case REQUEST_CODE_TRACK:
                         startActivity(new Intent(MainActivity.this, ObjectTrackingActivity.class));
+                        break;
+                    case REQUEST_CODE_CV:
+                        startActivity(new Intent(MainActivity.this, KNNActivity.class));
                         break;
                     default:
                         break;
@@ -88,4 +102,9 @@ public class MainActivity extends BaseActivity {
         // 检查权限
         mPermissionsManager.checkPermissions(REQUEST_CODE_TRACK, PERMISSIONS);
     }
+
+    public void CV(View view) {
+        mPermissionsManager.checkPermissions(REQUEST_CODE_CV, PERMISSIONS);
+    }
+
 }

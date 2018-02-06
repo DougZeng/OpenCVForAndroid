@@ -1,4 +1,4 @@
-package kong.qingwei.opencv320;
+package com.wesine.opencv320;
 
 import android.content.DialogInterface;
 import android.content.Intent;

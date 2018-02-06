@@ -1,25 +1,22 @@
-package kong.qingwei.opencv320;
+package com.wesine.opencv320;
 
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.kongqw.ObjectTrackingView;
-import com.kongqw.listener.OnCalcBackProjectListener;
-import com.kongqw.listener.OnObjectTrackingListener;
-import com.kongqw.listener.OnOpenCVLoadListener;
+import com.wesine.ObjectTrackingView;
+import com.wesine.listener.OnCalcBackProjectListener;
+import com.wesine.listener.OnObjectTrackingListener;
+import com.wesine.listener.OnOpenCVLoadListener;
 
 import org.opencv.android.Utils;
 import org.opencv.core.Mat;
 import org.opencv.core.Point;
+
 
 public class ObjectTrackingActivity extends BaseActivity {
 

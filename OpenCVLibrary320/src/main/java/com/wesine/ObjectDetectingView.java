@@ -1,4 +1,4 @@
-package com.kongqw;
+package com.wesine;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -12,7 +12,7 @@ import org.opencv.imgproc.Imgproc;
 import java.util.ArrayList;
 
 /**
- * Created by kqw on 2016/7/13.
+ *
  * RobotCameraView
  */
 public class ObjectDetectingView extends BaseCameraView {

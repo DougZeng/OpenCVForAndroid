@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="kong.qingwei.opencv320">
+    package="com.wesine.opencv320">
 
     <application
         android:allowBackup="true"
@@ -27,7 +27,16 @@
             android:name=".ObjectTrackingActivity"
             android:screenOrientation="landscape"
             android:theme="@style/FullscreenTheme" />
-        <activity android:name=".BaseActivity"></activity>
+        <activity android:name=".BaseActivity" />
+        <activity
+            android:name=".KNNActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/FullscreenTheme" />
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="c8f4ec7263b16eee77dad0136a5bc45a1a818b91" />
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

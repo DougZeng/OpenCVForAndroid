@@ -1,4 +1,4 @@
-package com.kongqw;
+package com.wesine;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -7,8 +7,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
 
-import com.kongqw.listener.OnCalcBackProjectListener;
-import com.kongqw.listener.OnObjectTrackingListener;
+import com.wesine.listener.OnCalcBackProjectListener;
+import com.wesine.listener.OnObjectTrackingListener;
 
 import org.opencv.core.Mat;
 import org.opencv.core.Point;
@@ -18,7 +18,7 @@ import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
 
 /**
- * Created by kqw on 2016/7/13.
+ *
  * ObjectTrackingView
  */
 public class ObjectTrackingView extends BaseCameraView implements View.OnTouchListener, OnCalcBackProjectListener {
