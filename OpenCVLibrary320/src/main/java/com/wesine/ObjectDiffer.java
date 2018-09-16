@@ -36,7 +36,7 @@ public class ObjectDiffer {
 
     public ObjectDiffer() {
         Size size = new Size(960, 1280);
-        fgmask = new Mat(size, CvType.CV_8U);
+        fgmask = new Mat(size, CvType.CV_8UC1);
         newMat = new Mat();
         knn = Video.createBackgroundSubtractorKNN(200, 600.0, true);
 
@@ -123,11 +123,11 @@ public class ObjectDiffer {
      * @return
      */
     public Mat objectDifferMat(Mat mRgba, Mat mGray) {
-        List<MatOfPoint> matOfPoints = new ArrayList<MatOfPoint>();
 
+        List<MatOfPoint> matOfPoints = new ArrayList<MatOfPoint>();
         try {
             Log.i(TAG, "objectDiffer: start");
-            Imgproc.resize(mRgba, newMat, new Size(640, 480));
+            Imgproc.resize(mGray, newMat, new Size(640, 480));
             Imgproc.GaussianBlur(newMat, newMat, new Size(11, 11), 0);
             Mat kernel_ellipse = Imgproc.getStructuringElement(Imgproc.MORPH_ELLIPSE, new Size(5, 5));
 //            Imgproc.dilate(newMat, newMat, kernel_ellipse);
@@ -150,7 +150,8 @@ public class ObjectDiffer {
             if (matOfPoints.size() > 0) {
                 matOfPoints.clear();
             }
-            Imgproc.findContours(fgmask, matOfPoints, new Mat(1280, 960, CvType.CV_32SC1), Imgproc.RETR_TREE, Imgproc.CHAIN_APPROX_SIMPLE);
+            //CvType.CV_32SC1
+            Imgproc.findContours(fgmask, matOfPoints, new Mat(mGray.rows(), mGray.cols(), CvType.CV_32SC1), Imgproc.RETR_TREE, Imgproc.CHAIN_APPROX_SIMPLE);
             if (matOfPoints.size() > 0) {
                 for (int i = 0; i < matOfPoints.size(); i++) {
                     MatOfPoint matOfPoint = matOfPoints.get(i);
@@ -158,27 +159,22 @@ public class ObjectDiffer {
                         double v = Imgproc.contourArea(matOfPoint);
                         if (v < maxArea && v > minArea) {
                             Rect rect = Imgproc.boundingRect(matOfPoint);
-                            Imgproc.rectangle(fgmask, rect.tl(), rect.br(), TRACKING_RECT_COLOR, 3);
+                            Imgproc.rectangle(newMat, rect.tl(), rect.br(), TRACKING_RECT_COLOR, 3);
                         }
                     }
 
                 }
             }
-
-
             Log.i(TAG, "objectDiffer: end");
-
-
-            if (mOnCalcBackDifferListener != null) {
-                mOnCalcBackDifferListener.onCalcBackProject(fgmask);
-            }
-
         } catch (Exception e) {
             e.printStackTrace();
             matOfPoints.clear();
-            matOfPoints = null;
         }
-
+        if (mOnCalcBackDifferListener != null) {
+            if (newMat != null) {
+                mOnCalcBackDifferListener.onCalcBackProject(newMat);
+            }
+        }
         return fgmask;
     }
 

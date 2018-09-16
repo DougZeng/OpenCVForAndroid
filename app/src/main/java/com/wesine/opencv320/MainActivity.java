@@ -6,8 +6,9 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
 
-import com.kongqw.permissionslibrary.PermissionsManager;
 import com.crashlytics.android.Crashlytics;
+import com.wesine.opencv320.common.PermissionsManager;
+
 import io.fabric.sdk.android.Fabric;
 
 

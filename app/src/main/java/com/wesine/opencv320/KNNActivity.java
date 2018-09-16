@@ -2,7 +2,6 @@ package com.wesine.opencv320;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.view.SurfaceView;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -59,17 +58,25 @@ public class KNNActivity extends BaseActivity {
         diffView.setOnCalcBackProjectListener(new OnCalcBackDifferListener() {
             @Override
             public void onCalcBackProject(final Mat backProject) {
+                if (backProject == null) {
+                    return;
+                }
                 KNNActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if (null == bitmap) {
-                            bitmap = Bitmap.createBitmap(backProject.width(), backProject.height(), Bitmap.Config.ARGB_8888);
-                        }
                         try {
+                            if (null == bitmap) {
+                                bitmap = Bitmap.createBitmap(backProject.width(), backProject.height(), Bitmap.Config.ARGB_8888);
+                            }
+
                             Utils.matToBitmap(backProject, bitmap);
                         } catch (Exception e) {
                             e.printStackTrace();
+                            bitmap = null;
                             backProject.release();
+                        }
+                        if (bitmap == null) {
+                            return;
                         }
                         im.setImageBitmap(bitmap);
 

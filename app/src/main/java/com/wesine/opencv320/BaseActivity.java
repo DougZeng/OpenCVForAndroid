@@ -8,7 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.kongqw.permissionslibrary.PermissionsManager;
+import com.wesine.opencv320.common.PermissionsManager;
+
 
 public class BaseActivity extends AppCompatActivity {
 

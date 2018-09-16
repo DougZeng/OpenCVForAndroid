@@ -159,10 +159,11 @@ public class JavaCameraView extends CameraBridgeViewBase implements PreviewCallb
                     mCamera.setParameters(params);
 
                     params = mCamera.getParameters();
-                    params.setPreviewFrameRate(25);
+                    params.setPreviewFrameRate(30);
                     int previewFrameRate = params.getPreviewFrameRate();
 
                     Log.i(TAG, "initializeCamera: previewFrameRate = " + previewFrameRate);
+
 
                     mFrameWidth = params.getPreviewSize().width;
                     mFrameHeight = params.getPreviewSize().height;
@@ -212,6 +213,8 @@ public class JavaCameraView extends CameraBridgeViewBase implements PreviewCallb
 
         return result;
     }
+
+
 
     protected void releaseCamera() {
         synchronized (this) {
